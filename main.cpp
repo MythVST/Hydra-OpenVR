@@ -110,7 +110,12 @@ void sixenseThreadFunc()
             if (state.ulButtonPressed & vr::ButtonMaskFromId(vr::k_EButton_ApplicationMenu))
                 data.buttons |= SIXENSE_BUTTON_START;
 
-            if (state.ulButtonPressed & vr::ButtonMaskFromId(vr::k_EButton_SteamVR_Touchpad))
+            if (state.ulButtonPressed & vr::ButtonMaskFromId(vr::k_EButton_A))
+                data.buttons |= SIXENSE_BUTTON_1;
+            if (state.ulButtonPressed & vr::ButtonMaskFromId(8)//A enumerates as 7. maybe B will be 8?
+                data.buttons |= SIXENSE_BUTTON_2;
+
+            if (state.ulButtonPressed & vr::ButtonMaskFromId(vr::k_EButton_SteamVR_Touchpad))//hopefully this won't cause problems if we leave it untouched
             {
                 if (state.rAxis[0].y < 0.0f)
                 {
